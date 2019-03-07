@@ -1,28 +1,37 @@
 @import 'var.scss';
 @import 'andy.scss';
+@font-face {
+  font-family: 'th_dan_vi_vekbold';
+  src: url('../font/th_dan_vi_vek_bold_ver_1.03-webfont.woff2') format('woff2'),
+       url('../font/th_dan_vi_vek_bold_ver_1.03-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'th_dan_vi_vekregular';
+  src: url('../font/th_dan_vi_vek_ver_1.03-webfont.woff2') format('woff2'),
+       url('../font/th_dan_vi_vek_ver_1.03-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
-@font-face {
-  font-family: 'athitiextralight';
-  src: url('../font/athiti-extralight-webfont.woff2') format('woff2'),
-       url('../font/athiti-extralight-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'athitiregular';
-  src: url('../font/athiti-regular-webfont.woff2') format('woff2'),
-       url('../font/athiti-regular-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
 body{
-  font-family : 'athitiregular';
+  font-family : 'th_dan_vi_vekregular';
 }
 
 // font-lightweight 
 .f-light{
   font-family: 'athitiextralight' !important;
 }
+
+  #sub {
+    background: 
+    linear-gradient(rgba(82, 82, 82, 0.21), rgba(0, 0, 0, 0.73)),url(../img/bg-sub.jpg);
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
 
 .bg {
   background: 
@@ -167,8 +176,8 @@ html, body {
       display: block;
       position: absolute;
       border-radius: 50%;
-      width: 60px;
-      height: 60px;
+      width: 95px;
+      height: 95px;
       text-align: center;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
       color: #fff;
@@ -351,8 +360,59 @@ html, body {
     }
   }
 }
-.inbtn{
-  width: 165px;
-  font-size: 30;
-}
 
+.h-ico{
+  left: 0px;
+  top: 0px;
+}
+.home-css{
+  color: white;
+    font-size: 95;
+    position: fixed;
+    left: 15px;
+    bottom: 60px;
+    width: 60px;
+    height: 60px;
+}
+.f-20{
+  font-size: 20px;
+}
+.f-40{
+  font-size: 40px;
+}
+.link-no-ndl{
+  text-decoration: none !important;
+}
+.hv-travel-img{
+  transition: .3s;
+  width: 100%;
+
+  &:hover{
+    transition: .3s;
+    transform: scale(1.1);
+  }
+}
+.w-33p{
+  width: 33.33%;
+}
+.f-100{
+  font-size: 80px;
+  letter-spacing: 5px;
+}
+.btn-custom {
+  background-color: rgba(0, 97, 202, 0.5);
+  border: none;
+  color: white;
+  cursor: pointer;
+  width: 250px;
+  font-size: 42px;
+  height: 90px;
+  border-radius: 10px;
+  letter-spacing: 0.8px;
+  padding:5px;
+  transition: .3s;
+  &:hover{
+    background-color: RoyalBlue;
+    transition: .3s;
+  }
+}

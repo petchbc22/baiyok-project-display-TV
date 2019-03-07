@@ -1,50 +1,48 @@
-
-
-$(window).scroll(function() {
-  if ($(this).scrollTop() >= 50) {       
-      $('#return-to-top').fadeIn(200);    
-  } else {
-      $('#return-to-top').fadeOut(200);   
-  }
-});
-$('#return-to-top').click(function() {      
-  $('body,html').animate({
-      scrollTop : 0                      
-  }, 500);
-});
-$(function() {
-  $("#anchor").on("click", function(event) {
-    var hash = $(this).attr("data-target"),
-      target = $("#" + hash);
-
-    event.preventDefault();
-    $("html, body").animate({
-        scrollTop: $(target).offset().top
-      },
-      800,
-      function() {
-        window.location.hash = hash;
-      }
-    );
+$(function(ev) {
+  var toggle = $('#ss_toggle');
+  var menu = $('#ss_menu');
+  var rot;
+  
+  $('#ss_toggle').on('click', function(ev) {
+    rot = parseInt($(this).data('rot')) - 180;
+    menu.css('transform', 'rotate(' + rot + 'deg)');
+    menu.css('webkitTransform', 'rotate(' + rot + 'deg)');
+    if ((rot / 180) % 2 == 0) {
+      //Moving in
+      toggle.parent().addClass('ss_active');
+      toggle.addClass('close');
+    } else {
+      //Moving Out
+      toggle.parent().removeClass('ss_active');
+      toggle.removeClass('close');
+    }
+    $(this).data('rot', rot);
   });
+
+  menu.on('transitionend webkitTransitionEnd oTransitionEnd', function() {
+    if ((rot / 180) % 2 == 0) {
+      $('#ss_menu div i').addClass('ss_animate');
+    } else {
+      $('#ss_menu div i').removeClass('ss_animate');
+    }
+  });
+  
 });
 
-$(function(){
-  var screen992       = 992
-      ,wtopnav         = $(".wrapper-topnav");
-  function responsive(){
-      if ($(window).width() < screen992) {
-          $('.js-nav-mobile').html($('.js-nav-desktop').html());
-      }else{
-          UIkit.offcanvas('#menu-of-canvas').hide();            
-      }
-  }
-  
-  $(window).resize(responsive).ready(responsive);
-});
+function delay (URL) {
+    setTimeout( function() { window.location = URL }, 1000 );
+}
+$(function() {
+   
+   $("#btnFadeOut").click(function(){
+      $('.fo').addClass('animated fadeOutDown')
+      $('.fo-all').addClass('animated fadeOut')
+    
+    });
+   
+    $("#ihomeFadeOut").click(function(){
+      $('.fo').addClass('animated fadeOut')
 
-  
-
-// if ($(this).scrollTop() > 1000) { 
-//     $('.branding').addClass('swaplogo');
-// }
+    });
+   
+ });

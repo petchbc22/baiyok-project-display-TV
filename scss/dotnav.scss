@@ -77,8 +77,8 @@ $dotnav-item-active-background:                  rgba($global-color, 0.6) !defau
 .uk-dotnav > * > * {
     display: block;
     box-sizing: border-box;
-    width: $dotnav-item-width;
-    height: $dotnav-item-height;
+    width: 20px;
+    height: 20px;
     border-radius: $dotnav-item-border-radius;
     background: $dotnav-item-background;
     /* 1 */
