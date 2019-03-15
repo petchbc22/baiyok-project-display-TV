@@ -1,43 +1,34 @@
 <?php
-	require('connect_db.php');
-	$strSQL = "SELECT * FROM place_th";
-	$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
-	// while($objResult = mysql_fetch_array($objQuery))
-    // {
-	// 	$placename = $objResult["place_name"];
-		// 	$strTitle = $result["images"];
-// 	$strHome = "หน้าแรก";
-// 	$strService = "บริการของเรา";
-// 	$strAbout = "เกี่ยวกับเรา";
-// 	$strContact = "ติดต่อเรา";
-// 	$str_Soundwelc = "media/th.mp3";
-// 	$btnmainNorth = "เหนือ";
-// 	$btnmainSouth = "ใต้";
-// 	$btnmainEast = "ตะวันออก";
-// 	$btnmainWest = "ตะวันตก";
+require('connect_db.php');
+$strSQL = "SELECT * FROM place_th";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 
-// 	$headingNorth = "มุมมองจากทางทิศเหนือ";
-// 	//** สมมุติค่ามาจาก Database ที่ได้จากการ Query ***//
-// 	$result["DETAIL_TH"] = "นี้คือเนื้อหาภาษาไทย";
 
-// 	$strDetail = $result["DETAIL_TH"];
+$strSQL_direction = "SELECT * FROM direction";
+$objQuery_direction = mysql_query($strSQL_direction) or die ("Error Query [".$strSQL_direction."]");
 
-// 	$north = "media/NORT.WAV";
-// // text in north view;
-// 	$Chitralada = "พระตำหนักจิตรลดารโหฐาน";
-// 	$suanpakkad = "วังสวนผักกาด";
-// 	$dusit = "สวนสัตว์ดุสิต";
-// 	$NationalLibrary = "‎หอสมุดแห่งชาติ";
-	// ?>
-<!-- 
-						<div class="px-3">
-                            <a href="javascript:delay('sub.php')">
-                                <button class="btn-custom  fo ">
-                                    <div class="d-flex justify-content-center">
-                                        <div style="padding: 10px;"><img src="img/compass-n.png" width="60" class="ani-infinite"></div>
-                                        <div class="m-auto"><?php echo $placename; ?></div>
-                                    </div>
-                                </button>
-                            </a>
-                        </div> -->
-	<?php  ?>
+
+	// $strTitle = "Welcome to My Web Site";
+	// $strHome = "Home";
+	// $strService = "Service";
+	// $strAbout = "About Us";
+	// $strContact = "Contact Us";
+	// $str_Soundwelc = "media/en.mp3";
+	$btnmainNorth = "ทิศเหนือ";
+	$btnmainSouth = "ทิศใต้";
+	$btnmainEast = "ทิศตะวันออก";
+	$btnmainWest = "ทิศตะวันตก";
+	// $headingNorth = "View from the north";
+	// //** สมมุติค่ามาจาก Database ที่ได้จากการ Query ***//
+	// $result["DETAIL_EN"] = "This is content English";
+
+	// $strDetail = $result["DETAIL_EN"];
+	// $north = "media/NORE.WAV";
+	// // text in north view
+	// $Chitralada = "Chitralada Palace";
+	// $suanpakkad = "Suan Pakkad Palace";
+	// $dusit = "Dusit Zoo";
+	// $NationalLibrary = "‎National Library of Thailand";
+	
+?>
+

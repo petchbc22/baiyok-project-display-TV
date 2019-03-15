@@ -1,5 +1,6 @@
 <?php
 session_start();
+
         if ($_SESSION["lang"] == "EN") {
             include("./language/en.php");
         } elseif ($_SESSION["lang"] == "RU") {

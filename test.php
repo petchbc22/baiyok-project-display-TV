@@ -1,5 +1,4 @@
 <?php
-// error_reporting(~E_NOTICE );
 include_once('config/check_lg.php');
 ?>
 <html>
@@ -26,46 +25,22 @@ include_once('config/check_lg.php');
                     <img src="img/logo.png" class="fo">
                     <div class="row justify-content-center py-3">
                     <?php 
-                    while($objResult = mysql_fetch_array($objQuery_direction))
-                    {
-                        $en_name = $objResult["en_name"];
-                        $th_name = $objResult["th_name"];
-                        $ch_name = $objResult["ch_name"];
-                        $ru_name = $objResult["ru_name"];
-                        $images = $objResult["icon"];
-                        $d_id = $objResult["d_id"];
-                        ?>
+                    while($objResult = mysql_fetch_array($objQuery))
+    {
+        $placename = $objResult["place_name"];
+        ?>
                         <div class="px-3">
-                            <a href="sub.php?d_id=<?php echo $d_id ?>">
+                            <a href="javascript:delay('sub.php')">
                                 <button class="btn-custom  fo ">
                                     <div class="d-flex justify-content-center">
-                                        <div style="padding: 10px;"><img src="<?php echo $images; ?>" width="60" class="ani-infinite"></div>
-                                        <div class="m-auto">
-                                        <?php 
-                                            if($_SESSION["lang"] == "EN")
-                                            { 
-                                                echo $en_name; 
-                                            }
-                                            elseif ($_SESSION["lang"] == "RU")  
-                                            {
-                                                echo $ru_name; 
-                                            }
-                                            elseif ($_SESSION["lang"] == "CH")  
-                                            {
-                                                echo $ch_name; 
-                                            }
-                                            else 
-                                            {
-                                                echo $th_name;
-                                            }
-                                        ?>
-                                        </div>
+                                        <div style="padding: 10px;"><img src="img/compass-n.png" width="60" class="ani-infinite"></div>
+                                        <div class="m-auto"><?php echo $placename; ?></div>
                                     </div>
                                 </button>
                             </a>
                         </div>
-                        <?php } ?>
-                        <!-- <div class="px-3">
+    <?php } ?>
+                        <div class="px-3">
                             <a href="#">
                                 <button class="btn-custom  fo ">
                                     <div class="d-flex justify-content-center">
@@ -94,7 +69,7 @@ include_once('config/check_lg.php');
                                     </div>
                                 </button>
                             </a>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>

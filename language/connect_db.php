@@ -1,5 +1,5 @@
 <?php
-	session_start();
+
 	/*
 	// --------- localhost
 	$user_db = "root";
