@@ -33,7 +33,7 @@ include_once('config/check_lg.php');
 ?>
 <html>
 <head>
-    <title><?php echo $strTitle;?></title>
+    <title>Baiyoke</title>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-874">
     <link href="css/components.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">   
@@ -51,7 +51,15 @@ include_once('config/check_lg.php');
                 <img src="img/232.png" width="200" class="">
             </div>
             <div class="col-8 py-3 m-auto text-center fo">
-                <h1 class="f-100 text-white text-center "><?php echo $result['place_name'];?></h1>
+                <h1 class="f-100 text-white text-center" 
+                    style="
+                        <?php 
+                            if($_SESSION["lang"]== "CH") 
+                                { 
+                                    echo "font-size:36px;";
+                                } 
+                        ?>"> 
+                    <?php echo $result['place_name'];?></h1>
             </div>
             <div class="col-2 py-3 m-auto text-right">
             </div>
@@ -60,10 +68,19 @@ include_once('config/check_lg.php');
     <div class="container animated fadeInDown mw-1600" >
         <div class="row">
             <div class="col-12 text-center">
-                <img src="<?php echo $result['images'];?>" width="500">
+                <img src="img/<?php echo $result['images'];?>" width="500">
             </div>
             <div class="col-12">
-                <p class="text-white f-40"><?php echo $result['detail'];?></p>
+                <p class="text-white f-40 py-5"
+                   style="
+                        <?php 
+                            if($_SESSION["lang"]== "CH") 
+                            { 
+                                echo "font-size:24px;";
+                            } 
+                        ?>"> 
+                   "
+                ><?php echo $result['detail'];?></p>
             </div>
         </div>
     </div>

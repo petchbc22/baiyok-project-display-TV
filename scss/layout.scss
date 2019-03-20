@@ -30,7 +30,7 @@ body{
 }
 
 #sub {
-  background: linear-gradient(rgba(0, 0, 0, 0.59), rgba(0, 0, 0, 0.8)),url(../img/bg-sub.jpg);
+
    @include const-bg;
   }
 #n_cld{
@@ -372,7 +372,19 @@ html, body {
     height: 60px;
 }
 .f-20{
-  font-size: 20px;
+  font-size: 20px !important;
+}
+.f-24{
+  font-size: 24px !important;
+}
+.f-26{
+  font-size: 26px !important;
+}
+.f-30{
+  font-size: 30px;
+}
+.f-36{
+  font-size: 36px !important;
 }
 .f-40{
   font-size: 40px;
@@ -404,7 +416,7 @@ html, body {
   border: none;
   color: #fff;
   cursor: pointer;
-  width: 185px;
+  width: 210px;
   font-size: 35px;
   height: 90px;
   border-radius: 10px;
@@ -496,7 +508,7 @@ html, body {
     color:#fff;
     background-color: rgba(0, 0, 0, 0.76);
     .title{
-      font-size:3.6em;
+      font-size: 3em;
       font-weight:bold;
       margin-bottom:5px;
     }

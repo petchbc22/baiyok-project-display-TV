@@ -1,24 +1,33 @@
 <?php
-
 include_once('config/check_lg.php');
 $_SESSION["d_id"] = $_GET['d_id'] ; 
 ?>
 <html>
+<?php 
+    $strSQL = "SELECT * FROM direction WHERE d_id='{$_GET['d_id']}'";
+    $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+    $result = mysql_fetch_assoc($objQuery);
+?>
 <head>
-    <title><?php echo $strTitle;?></title>
+    <title>Baiyoke</title>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-874">
     <link href="css/components.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">   
     <link href="css/animate.css" rel="stylesheet">
-    <link href="css/swiper.min.css" rel="stylesheet">
+    <link href="css/swiper.min.css" rel="stylesheet">.
+    <style>
+        #sub{
+           background: linear-gradient(rgba(0, 0, 0, 0.59), rgba(0, 0, 0, 0.8)),url(img/<?php echo $result['img_bg'];?>);
+           height: 100%;
+           background-position: center;
+           background-repeat: no-repeat;
+           background-size: cover;
+        }
+    </style>
 </head>
 <body id="sub">
 <div class="animated fadeIn fo no-ovf">
-    <?php 
-    $strSQL = "SELECT * FROM direction WHERE d_id='{$_GET['d_id']}'";
-    $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
-    $result = mysql_fetch_assoc($objQuery);
-    ?>
+
     <audio autoplay>
         <source src=<?php echo $north ?> type="audio/mpeg">
     </audio>
@@ -29,27 +38,35 @@ $_SESSION["d_id"] = $_GET['d_id'] ;
             </div>
 
             <div class="col-8 py-3 m-auto text-center fo">
-                <h1 class="f-100 text-white text-center ">
+                
 
                 <?php 
                     if($_SESSION["lang"] == "EN")
                     { 
+                        echo '<h1 class="f-100 text-white text-center ">';
                         echo $result["en_name"];
+                        echo '</h1>';
                     }
                     elseif ($_SESSION["lang"] == "TH")  
                     {
+                        echo '<h1 class="f-100 text-white text-center ">';
                         echo $result["th_name"];
+                        echo '</h1>';
                     }
                     elseif ($_SESSION["lang"] == "CH")  
                     {
+                        echo '<h1 class="f-40 text-white text-center ">';
                         echo $result["ch_name"];
+                        echo '</h1>';
                     }
                     else 
                     {
+                        echo '<h1 class="f-40 text-white text-center ">';
                         echo $result["ru_name"];
+                        echo '</h1>';
                     }
                 ?>
-                </h1>
+                
            
             </div>
             <div class="col-2 py-3 m-auto text-right">
@@ -91,13 +108,23 @@ $_SESSION["d_id"] = $_GET['d_id'] ;
                     ?>
 
                         <div class="swiper-slide">
-                            <figure class="slide-bgimg" style="background-image:url(<?php echo $images;?>)">
-                                <img src="<?php echo $objResult["images"];?>" class="entity-img" />
+                            <figure class="slide-bgimg" style="background-image:url(img/<?php echo $images;?>)">
+                                <img src="img/<?php echo $objResult["images"];?>" class="entity-img" />
                             </figure>
                             <div class="content">
-                                <a class="title link-no-ndl" href="detail.php?id=<?php echo $objResultslide['id']; ?>"> <?php echo $placename;?></a>
+                                <a href="detail.php?id=<?php echo $objResultslide['id']; ?>" 
+                                   class="
+                                        <?php 
+                                            if($_SESSION["lang"]== "CH") 
+                                                { 
+                                                    echo "title link-no-ndl f-36";
+                                                } 
+                                            else{
+                                                    echo "title link-no-ndl";
+                                            }
+                                        ?>"> 
+                                        <?php echo $placename;?></a>
                                 <span class="caption">
-                               
                                 </span>
                             </div>
                         </div>
@@ -144,8 +171,8 @@ $_SESSION["d_id"] = $_GET['d_id'] ;
                         $images1 = $objResultslide["images"];
                     ?>
                         <div class="swiper-slide">
-                            <figure class="slide-bgimg" style="background-image:url(<?php echo $images1;?>)">
-                                <img src="<?php echo $images1;?>" class="entity-img" />
+                            <figure class="slide-bgimg" style="background-image:url(img/<?php echo $images1;?>)">
+                                <img src="img/<?php echo $images1;?>" class="entity-img" />
                             </figure>
                             <div class="content">
                         
@@ -162,66 +189,43 @@ $_SESSION["d_id"] = $_GET['d_id'] ;
     </div>
     <div class="container animated fadeInDown mw-1600 pt-2" id="grid">
         <div class="row">
-            <div class="col-md-12">
-                <div uk-slider>
-                    <div class="uk-position-relative">
-                        <div class="uk-slider-container">
-                            <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m"> 
-                            
-                            <?php 
-                                if($_SESSION["lang"] == "EN")
-                                { 
-                                    $strSQL_grid = "SELECT * FROM place_en WHERE d_id='{$_GET['d_id']}'";
-                                    $objQuery_grid = mysql_query($strSQL_grid) or die ("Error Query [".$strSQL_gridt."]");
-                                }
-                                elseif ($_SESSION["lang"] == "RU")  
-                                {
-                                    $strSQL_grid = "SELECT * FROM place_ru WHERE d_id='{$_GET['d_id']}'";
-                                    $objQuery_grid = mysql_query($strSQL_grid) or die ("Error Query [".$strSQL_grid."]");
-                                }
-                                elseif ($_SESSION["lang"] == "CH")  
-                                {
-                                    $strSQL_grid = "SELECT * FROM place_ch WHERE d_id='{$_GET['d_id']}'";
-                                    $objQuery_grid = mysql_query($strSQL_grid) or die ("Error Query [".$strSQL_grid."]");
-                                }
-                                else 
-                                {
-                                    $strSQL_grid = "SELECT * FROM place_th WHERE d_id='{$_GET['d_id']}'";
-                                    $objQuery_grid = mysql_query($strSQL_grid) or die ("Error Query [".$strSQL_grid."]");
-                                }
-                            ?>
-                            <?php
-                                    $i = 0;
-                                    $a = 0;
-                                    while($objResultgrid = mysql_fetch_array($objQuery_grid))  
-                                    {
-                                        $id = $objResultgrid['id'];
-                                        echo '<li>';                                    
-                                        if ($i >= 0)  {
-                                        echo '<div class="mw-300-uk-slide p-2 custom-hv text-left">';
-                                        echo '<a href="detail.php?id='.$objResultgrid['id'].'" class="link-no-ndl">';
-                                        echo '<img src="'.$objResultgrid['images'].'" width="400" height="270">';
-                                        echo '<h1 class="text-white text-center pt-2">'.$objResultgrid['place_name'].'</h1>';
-                                        echo '</a></div>';
-                                    }
-                                    $i++;
-                                        echo '</li>';
-                                }
-                                ?>     
-                            </ul>
-                        </div>
-                        <div class="uk-hidden@s uk-light">
-                            <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-                            <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
-                        </div>
-                        <div class="uk-visible@s">
-                            <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-                            <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
-                        </div>
-                    </div>
-                    <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
-                </div>
+            <?php 
+                if($_SESSION["lang"] == "EN")
+                { 
+                    $strSQL_grid = "SELECT * FROM place_en WHERE d_id='{$_GET['d_id']}'";
+                    $objQuery_grid = mysql_query($strSQL_grid) or die ("Error Query [".$strSQL_gridt."]");
+                }
+                elseif ($_SESSION["lang"] == "RU")  
+                {
+                    $strSQL_grid = "SELECT * FROM place_ru WHERE d_id='{$_GET['d_id']}'";
+                    $objQuery_grid = mysql_query($strSQL_grid) or die ("Error Query [".$strSQL_grid."]");
+                }
+                elseif ($_SESSION["lang"] == "CH")  
+                {
+                    $strSQL_grid = "SELECT * FROM place_ch WHERE d_id='{$_GET['d_id']}'";
+                    $objQuery_grid = mysql_query($strSQL_grid) or die ("Error Query [".$strSQL_grid."]");
+                }
+                else 
+                {
+                    $strSQL_grid = "SELECT * FROM place_th WHERE d_id='{$_GET['d_id']}'";
+                    $objQuery_grid = mysql_query($strSQL_grid) or die ("Error Query [".$strSQL_grid."]");
+                }
+            ?>
+            <?php 
+                while($objResultgrid = mysql_fetch_array($objQuery_grid))  
+                {
+                $imagegrid = $objResultgrid['images'];
+                $place_name = $objResultgrid['place_name'];
+            ?>
+            <div class="col-md-4">
+                <a href="detail.php?id=<?php echo $objResultgrid['id'];?>" class="link-no-ndl">
+                    <img src="img/<?php echo $imagegrid; ?>" width="100%" height="317">
+                    <div class="py-3">
+                        <h1 class="text-white text-center"><?php echo $place_name; ?></h1>
+                    </div>  
+                </a>
             </div>
+            <?php } ?>
         </div>
     </div>
     <div style="position: fixed;bottom: 20px;right: 20px;">
